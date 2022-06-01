@@ -1,0 +1,139 @@
+package edu.neu.csye6200;
+
+public class Cart {
+	
+	public final static int MAJOR_VERSION=1;
+	public final static int MINOR_VERSION=0;
+	public final static String VERSION=Integer.valueOf(MAJOR_VERSION).toString()
+	+ "."+Integer.valueOf(MINOR_VERSION).toString();
+	
+	private double myCash;
+	private double myTotal;
+	private double myChange;
+	
+	//Constructor with initialization
+	{
+		this.myCash = 20;
+		this.myTotal = 0;
+		this.myChange = 0;
+	}
+	
+	// Super Class
+	public Cart() {
+		super();
+		
+	}
+
+	//Fields
+	public Cart(double myCash, double myTotal, double myChange) {
+		super();
+		this.myCash = myCash;
+		this.myTotal = myTotal;
+		this.myChange = myChange;
+	}
+
+	//Getters and Setters
+
+	public double getMyCash() {
+		return myCash;
+	}
+
+
+	public void setMyCash(double myCash) {
+		this.myCash = myCash;
+	}
+
+
+	public double getMyTotal() {
+		return myTotal;
+	}
+
+
+	public void setMyTotal(double myTotal) {
+		this.myTotal = myTotal;
+	}
+
+
+	public double getMyChange() {
+		return myChange;
+	}
+
+
+	public void setMyChange(double myChange) {
+		this.myChange = myChange;
+	}
+	
+	//toString
+	@Override
+	public String toString() {
+		 StringBuilder sb=new StringBuilder("\n\tCart");
+		 //sb.append("[version ").append(VERSION).append("]: ");
+		 sb.append("\n\tCash ").append(this.myCash);
+		 sb.append("\n\tTotal ").append(this.myTotal);
+		 sb.append("\n\tChange ").append(this.myChange);
+		 
+		 return sb.toString();
+		//return "Cart [myCash=" + myCash + ", myTotal=" + myTotal + ", myChange=" + myChange + "]";
+	}
+	
+    //sillyCheckout
+	 public void sillyCheckout(double cash, double price, double total, double change) {
+		 
+	 }
+	 
+	 
+	 //checkout
+	 public double checkout(Cart myCart, Item myItem) {
+		
+		 return myCart.getMyChange();
+		 
+	 }
+	
+	public static void demo() {
+		System.out.println("\n\t" +Cart.class.getName()+".demo()...");
+		
+		//double cash=20, total=0, change=0;
+		
+		Item bread=new Item(1,1.49,"wheat bread");
+		Item soup=new Item(2,2.5,"soup");
+		Item cake=new Item(3,3.49,"cake");
+		
+		Cart myShoppingCart=new Cart();
+		
+//		myShoppingCart.sillyCheckout(cash, bread.getPrice(), total, change);
+//		myShoppingCart.checkout(myShoppingCart, bread);
+//		System.out.println("TOTAL "+ total);
+//		System.out.println("CHANGE "+ change);
+		System.out.println(myShoppingCart);
+		
+		System.out.println("\n\t" +Cart.class.getName()+".demo()...done!");
+
+		/*
+		
+		
+		
+		 System.out.println("\n\t" +Cart.class.getName()+".demo()...");
+		 
+		 Item bread=new Item(1,1.49,"wheat bread");
+		 //Item soup=new Item(2,2.5,"soup");
+		 //Item cake=new Item(3,3.49,"cake");
+		 
+		 double cash=20, total=0, change=0;
+		 
+		 Cart myShoppingCart=new Cart();
+		 
+		 myShoppingCart.sillyCheckout(cash, bread.getPrice(), total, change);
+		 myShoppingCart.checkout(myShoppingCart, bread);
+		 System.out.println("TOTAL "+ total);
+		 System.out.println("CHANGE "+ change);
+		 
+		 
+		 System.out.println(myShoppingCart);
+		// System.out.println(myShoppingCart.toString());
+		 System.out.println("\n\\t"+ Cart.class.getName()+".demo()...done!");*/
+
+	}
+	
+	
+
+}

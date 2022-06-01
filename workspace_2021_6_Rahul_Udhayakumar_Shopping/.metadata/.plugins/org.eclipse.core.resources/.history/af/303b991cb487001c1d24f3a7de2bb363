@@ -1,0 +1,72 @@
+package edu.neu.csye6200;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Item {
+
+	private int id;
+	private String Name;
+	private double Price;
+	
+	public Item() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Item(int id, double price, String name) {
+		super();
+		this.id = id;
+		Name = name;
+		Price = price;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return Name;
+	}
+
+	public void setName(String name) {
+		Name = name;
+	}
+
+	public double getPrice() {
+		return Price;
+	}
+
+	public void setPrice(double price) {
+		Price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Item [id=" + id + ", Name=" + Name + ", Price=" + Price + "]";
+	}
+	
+	public static void demo() {
+		List<Item> itemList = new ArrayList<>();
+		itemList.add(new Item(1,1.49,"BREAD"));
+		itemList.add(new Item(2,2.5,"MILK"));	
+		itemList.add(new Item(3,3.49,"CAKE"));	
+
+		
+		double initialAmt = 20.0;
+		System.out.println("Item \t Price");
+		for(Item i : itemList) {
+			if(i.getPrice() < initialAmt) {
+				System.out.println(i.getName() + "\t"+ i.getPrice());
+				initialAmt -= i.getPrice();
+			}			
+		}
+		
+		System.out.println("Total "+ String.format("%.2f", (20 - initialAmt)));
+		System.out.println("Change "+ String.format("%.2f", initialAmt));
+	}
+}

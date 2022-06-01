@@ -1,0 +1,152 @@
+package edu.neu.csye6200;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cart {
+	
+	private double myCash;
+	private double myTotal;
+	private double myChange;
+	List<Item> itemList = new ArrayList<>();
+	
+	//Constructor with initialization
+	{
+		this.myCash = 20;
+		this.myTotal = 0;
+		this.myChange = 0;
+	}
+	
+	// Super Class
+	public Cart() {
+		super();
+		
+	}
+
+	//Fields
+	public Cart(double myCash, double myTotal, double myChange) {
+		super();
+		this.myCash = myCash;
+		this.myTotal = myTotal;
+		this.myChange = myChange;
+	}
+
+	//Getters and Setters
+
+	public double getMyCash() {
+		return myCash;
+	}
+
+
+	public void setMyCash(double myCash) {
+		this.myCash = myCash;
+	}
+
+
+	public double getMyTotal() {
+		return myTotal;
+	}
+
+
+	public void setMyTotal(double myTotal) {
+		this.myTotal = myTotal;
+	}
+
+
+	public double getMyChange() {
+		return myChange;
+	}
+
+
+	public void setMyChange(double myChange) {
+		this.myChange = myChange;
+	}
+	
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
+
+	//toString
+	@Override
+	public String toString() {
+		 StringBuilder sb=new StringBuilder("\n\tCart");
+		 sb.append("\n\tCash ").append(this.myCash);
+		 sb.append("\n\tTotal ").append(this.myTotal);
+		 sb.append("\n\tChange ").append(this.myChange);
+		 
+		 return sb.toString();
+		//return "Cart [myCash=" + myCash + ", myTotal=" + myTotal + ", myChange=" + myChange + "]";
+	}
+	
+    //sillyCheckout
+	 public void sillyCheckout(double cash, double price, double total, double change) {
+		change=cash-total;
+		System.out.println("\n**************************");
+		System.out.println("\nsillyCheckout OUTPUT ");
+		System.out.println("\n**************************");
+		System.out.println("\nCash: "+ cash);
+		System.out.println("\nTotal: "+ total);
+		System.out.println("\nChange: "+ change);
+		System.out.println("\n**************************");
+	 }
+	 
+	 
+	 //checkout
+	 public double checkout(Cart myCart, List<Item> myItems) {
+		for(Item i: myItems) {
+			myTotal=myTotal+(i.getPrice());
+		}
+		 myChange=myCash-myTotal;
+		 System.out.println("\n**************************");
+		 System.out.println("\ncheckout OUTPUT ");
+		 System.out.println("\n**************************");
+		 System.out.println("\nCash: "+ myCash);
+		 System.out.println("\nTotal: "+ myTotal);
+		 System.out.println("\nChange: "+ myChange);
+		 System.out.println("\n**************************");
+		 return myCart.getMyChange();
+		 
+	 }
+	
+	public static void demo() {
+		
+		Item bread=new Item(1,1.49,"BREAD");
+		Item milk=new Item(2,2.5,"MILK");
+		Item cake=new Item(3,3.49,"CAKE");
+
+		List<Item> item = new ArrayList<>();
+		item.add(bread);
+		item.add(milk);	
+		item.add(cake);
+		
+		double initialCash = 20.0, total=0, change=0;
+		System.out.println("\n********* RECIEPT *********");
+		System.out.println("Item \t Price");
+		for(Item i: item) {
+			total=total+(i.getPrice());
+			System.out.println("\n"+i.getName()+" \t "+ i.getPrice());
+		}
+		System.out.println("\n**************************");
+		
+		double finalPrice=total;
+		
+		Cart myShoppingCart=new Cart();
+		myShoppingCart.sillyCheckout(initialCash,finalPrice, total, change);
+		myShoppingCart.checkout(myShoppingCart,item);
+		
+		System.out.println("\n System.out.println(myShoppingCart);");
+		System.out.println(myShoppingCart);
+		System.out.println("\n System.out.println(myShoppingCart.toString());");
+		System.out.println(myShoppingCart.toString());
+		
+		
+
+	}
+	
+	
+
+}
